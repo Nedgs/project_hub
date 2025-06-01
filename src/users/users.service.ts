@@ -21,4 +21,10 @@ export class UsersService {
   async findByEmail(email: string) {
     return this.userRepository.findOne({ where: { email } });
   }
+
+  async create(data: Partial<UserEntity>) {
+    const user = this.userRepository.create(data);
+
+    return this.userRepository.save(user);
+  }
 }
